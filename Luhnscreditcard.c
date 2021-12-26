@@ -51,28 +51,27 @@ void checkcard(long int n)
   type=cardtype(n);
   if((sum%10)==0 && (type!=0))
   {
-    printf("\nCard no is valid..");
-
+    switch(type)
+  {
+  case 0:printf("\nINVALID card no.");
+         break;
+  case 1:printf("\nAmerican Express Card");
+         break;
+  case 2:printf("\nMaster Card");
+         break;
+  case 3:printf("\nVISA Card");
+         break;
+  default:printf("\nSomething went wrong");
+         break;
   }
+}
   else
   {
   printf("\nCard no is invalid..");
   }
-
-  switch(type)
-  {
-  case 0:printf("INVALID");
-         break;
-  case 1:printf("American Express Card");
-         break;
-  case 2:printf("Master Card");
-         break;
-  case 3:printf("VISA Card");
-         break;
-  default:printf("Something went wrong");
-         break;
-  }
 }
+
+  
 int digtsum(long int n)
 {
  int sum=0;
