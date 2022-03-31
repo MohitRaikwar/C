@@ -11,12 +11,10 @@ void free_list(node**);
 void show_list(node**);
 int main()
 {
- 
   node* list =NULL;
   int n;
   while(1)
-  { 
-    
+  {
     int choice;
     printf("\nSelect from following options :\n\n");
     printf("1.Insert new node at start of list\n");
@@ -45,7 +43,7 @@ int main()
     default:printf("Wrong choice..");
             break;
     }
-  } 
+  }
   return 0;
 }
 void insert_at_last(node **list,int n)
