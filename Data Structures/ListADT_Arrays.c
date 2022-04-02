@@ -43,16 +43,37 @@ int main()
     case 2:printf("Size of list is : %d",n);
            break;
 
-    case 3:printf("Enter the index to retrieve element :");
-           scanf("%d",&index);
-           printf("Element at index %d is : %d",index,retrieve_item(index));
-           break;
+    case 3: if(n!=0)
+            {
+                printf("Enter the index to retrieve element :");
+                scanf("%d",&index);
+                if(index<n)
+                {
+                    printf("Element at index %d is : %d",index,retrieve_item(index));
+                }
+                else
+               {
+                    printf("Index value greater the size of list");
+               }
+            }
+            else
+            {
+                printf("Can't retrive,list is empty!");
+            }
+            break;
 
-    case 4:printf("Enter the index :");
-           scanf("%d",&index);
-           printf("Enter the new value :");
-           scanf("%d",&element);
-           update_item(index,element);
+    case 4:if(n!=0)
+            {
+                printf("Enter the index :");
+                scanf("%d",&index);
+                printf("Enter the new value :");
+                scanf("%d",&element);
+                update_item(index,element);
+            }
+            else
+            {
+                printf("Can't update,list is empty!");
+            }
            break;
 
     case 5:if(n==MAX)
@@ -67,9 +88,16 @@ int main()
            }
            break;
 
-    case 6:printf("Enter the index of element to be deleted :");
-           scanf("%d",&index);
-           delete_item(index);
+    case 6:if(n!=0)
+           {
+             printf("Enter the index of element to be deleted :");
+             scanf("%d",&index);
+             delete_item(index);
+           }
+           else
+           {
+               printf("Can't delete,list is empty!!");
+           }
            break;
     case 7:traverse_list();
            break;
@@ -113,8 +141,9 @@ int retrieve_item(int index)
 //updates the i'th index with new value
 void update_item(int index,int newitem)
 {
-    arr[index]=newitem;
-    printf("Successfully updated");
+        arr[index]=newitem;
+        printf("Successfully updated");
+
 }
 
 //inserts a new item in list if space is available in list
@@ -140,26 +169,27 @@ void insert_item(int index,int item)
 //deletes i'th index element from list
 void delete_item(int index)
 {
-    if(n>0)
-    {
-        for(int i=index;i<n;i++)
+    for(int i=index;i<n;i++)
         {
             arr[i]=arr[i+1];
         }
         n--;
         printf("Successfully deleted item from list");
-    }
-    else
-    {
-        printf("List is empty!!");
-    }
+
 }
 
 //traverse list from left to right
 void traverse_list()
 {
-    for(int i=0;i<n;i++)
+    if(n!=0)
     {
-        printf("Element at %d index : %d\n",i,arr[i]);
+        for(int i=0;i<n;i++)
+        {
+            printf("Element at %d index : %d\n",i,arr[i]);
+        }
+    }
+    else
+    {
+        printf("List is empty!");
     }
 }
