@@ -1,5 +1,8 @@
 #include<stdio.h>
+
+//for exit()function call
 #include<stdlib.h>
+
 //Declaration of maximum size of array using macro
 #define MAX 10
 
