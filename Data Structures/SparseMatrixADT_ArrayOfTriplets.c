@@ -1,17 +1,27 @@
+         /* Implementation of Sparse Matrix ADT using array of triplets */
+
 #include<stdio.h>
-#include<stdlib.h>
+#include<stdlib.h> //for exit()
+#include<stdbool.h> //for bool
+
+//macros
 #define MAX_TERMS 101
 #define MAX_ROW 10
 #define MAX_COL 10
+
+//defining structure
 typedef struct Term
 {
     int row;
     int col;
     int value;
 }Term;
+
+//Global Structure arrays
 Term p[MAX_TERMS];
 Term q[MAX_TERMS];
 
+//functions prototype
 void create_sparse_matrix(Term a[],int maxItems);
 void create_sparse_matrix_v2(Term a[],int row,int col,int arr[row][col]);
 void input_normal_matrix(int row ,int col,int arr[row][col]);
@@ -20,14 +30,12 @@ void print_normal_matrix(int row,int col,int arr[row][col]);
 void transpose(Term a[],Term b[]);
 void fast_transpose(Term a[],Term b[]);
 void add_sparse_matrix(Term a[],Term b[]);
+
+//main function
 int main()
 {
     int maxRow,maxCol,maxItems;
-    printf("Enter no of rows :");
-    scanf("%d",&maxRow);
-    printf("Enter no of columns :");
-    scanf("%d",&maxCol);
-    maxItems=maxRow*maxCol;
+    
     while(1)
     {
         int choice;
@@ -44,10 +52,14 @@ int main()
         scanf("%i",&choice);
         switch(choice)
         {
-            case 1:{
+            case 1:printf("Enter no of rows :");
+                   scanf("%d",&maxRow);
+                   printf("Enter no of columns :");
+                   scanf("%d",&maxCol);
+                   maxItems=maxRow*maxCol;
                    create_sparse_matrix(p,maxItems);
                    printf("Successfully created matrix");
-                   break;}
+                   break;
             case 2:{printf("Enter no of rows :");
                    scanf("%d",&maxRow);
                    printf("Enter no of columns :");
@@ -60,11 +72,18 @@ int main()
                    break;}
 
             //case 3:break;
-            case 4:{
-                   create_sparse_matrix(q,maxItems);
-                   transpose(p,q);
-                   print_matrix(q,'q');
-                   break;}
+            case 4:if(p[0].value==0)
+                    {
+                        printf("Can't find transpose since p matrix is null");
+                    }
+                    else
+                    {
+                        create_sparse_matrix(q,maxItems);
+                        transpose(p,q);
+                        print_matrix(q,'q');
+                        break;
+                    }
+
             //case 5:break;
             case 6:{printf("Enter no of rows of second matrix :");
                    scanf("%d",&maxRow);
@@ -88,6 +107,8 @@ int main()
     }
     return 0;
 }
+
+//creates a sparse matrix of size maxitems having each elements value set to 0
 void create_sparse_matrix(Term a[],int maxItems)
 {
     for(int i=0;i<=maxItems;i++)
@@ -97,6 +118,8 @@ void create_sparse_matrix(Term a[],int maxItems)
         a[i].value=0;
     }
 }
+
+//creates a sparse matrix from an array
 void create_sparse_matrix_v2(Term a[],int row,int col,int arr[row][col])
 {
     int count=0;
@@ -133,6 +156,8 @@ void create_sparse_matrix_v2(Term a[],int row,int col,int arr[row][col])
 
         }
     }
+
+//grants user to input a matrix
 void input_normal_matrix(int row ,int col,int arr[row][col])
 {
     for(int i=0;i<row;i++)
@@ -144,6 +169,8 @@ void input_normal_matrix(int row ,int col,int arr[row][col])
         }
     }
 }
+
+//prints the normal matrix
 void print_normal_matrix(int row,int col,int arr[row][col])
 {
         for(int i=0;i<row;i++)
@@ -155,6 +182,8 @@ void print_normal_matrix(int row,int col,int arr[row][col])
         printf("\n");
     }
 }
+
+//prints sparse matrix
 void print_matrix(Term a[],char name)
 {
     printf("%c[i]  Row Col Value\n",name);
@@ -163,6 +192,8 @@ void print_matrix(Term a[],char name)
         printf("\n%c[%d] = %d   %d    %d",name,i,a[i].row,a[i].col,a[i].value);
     }
 }
+
+//finds transpose of a sparse matrix
 void transpose(Term a[],Term b[])
 {
     int n,i,j,currentb;
@@ -189,6 +220,8 @@ void transpose(Term a[],Term b[])
     }
 
 }
+
+//find transpose of a sparse matrix and have less time complexity
 void fast_transpose(Term a[],Term b[])
 {
     int rowTerm[MAX_COL],startPos[MAX_COL];
@@ -220,17 +253,52 @@ void fast_transpose(Term a[],Term b[])
     }
 }
 
+//prints addition of two sparse matrix(unsorted)
 void add_sparse_matrix(Term a[],Term b[])
 {
     Term sum[MAX_TERMS];
     sum[0].row=a[0].row;
     sum[0].col=a[0].col;
-    sum[0].value=a[0].value+b[0].value;
-    for(int i=1;i<sum[0].value;i++)
+
+    //keeps count of non-zero values for matrix sum
+    int n=0;
+
+    //copies the first sparse matrix as it is
+    for(int i=1;i<=a[0].value;i++)
     {
-            if(a[i].row==b[i].row && a[i].col==b[i].col)
-            {
-                sum[i].value=a[i].value+b[i].value;
-            }
+            sum[++n].row=a[i].row;
+            sum[n].col=a[i].col;
+            sum[n].value=a[i].value;
     }
+
+    //traverse through elements of second matrix
+    for(int j=1;j<=b[0].value;j++)
+    {
+        bool isPresent=false;
+
+        //loops over sum matrix to find if second matrix rows and columns already present in sum matrix
+        for(int k=1;k<=n;k++)
+        {
+            //if present the adds their values and sets the isPresent value to true
+            if(sum[k].row==b[j].row && sum[k].col==b[j].col)
+            {
+                sum[k].value+=b[j].value;
+                isPresent=true;
+                break;
+            }
+        }
+
+        //if not present then add that triplet to our sum matrix
+        if(!isPresent)
+        {
+            sum[++n].row=b[j].row;
+            sum[n].col=b[j].col;
+            sum[n].value=b[j].value;
+        }
+    }
+
+    //set count of non zero values of sum to n
+    sum[0].value=n;
+
+    print_matrix(sum,'s');
 }
