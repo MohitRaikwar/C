@@ -24,18 +24,19 @@ Term q[MAX_TERMS];
 //functions prototype
 void create_sparse_matrix(Term a[],int maxItems);
 void create_sparse_matrix_v2(Term a[],int row,int col,int arr[row][col]);
+void create_sparse_matrix_v3(Term a[],int row,int col,int value);
 void input_normal_matrix(int row ,int col,int arr[row][col]);
 void print_matrix(Term a[],char name);
 void print_normal_matrix(int row,int col,int arr[row][col]);
 void transpose(Term a[],Term b[]);
 void fast_transpose(Term a[],Term b[]);
 void add_sparse_matrix(Term a[],Term b[]);
+void sort_matrix(Term a[]);
 
 //main function
 int main()
 {
-    int maxRow,maxCol,maxItems;
-    
+    int Row,Col,maxItems;
     while(1)
     {
         int choice;
@@ -43,7 +44,8 @@ int main()
         printf("1.Create a sparse matrix\n");
         printf("2.Create a sparse matrix from given normal matrix\n");
         printf("3.Create a sparse matrix from given set of triplets <row,col,value>\n");
-        printf("4.Find transpose of sparse matrix\n");
+        printf("\nUse option 2 or 3 before selecting following options\n");
+        printf("4.Find transpose of sparse matrix(Use option 2 or 3 before this option)\n");
         printf("5.Find transpose of sparse matrix (fast method)\n");
         printf("6.Find addition of two sparse matrix\n");
         printf("7.Print matrix\n");
@@ -53,25 +55,56 @@ int main()
         switch(choice)
         {
             case 1:printf("Enter no of rows :");
-                   scanf("%d",&maxRow);
+                   scanf("%d",&Row);
                    printf("Enter no of columns :");
-                   scanf("%d",&maxCol);
-                   maxItems=maxRow*maxCol;
+                   scanf("%d",&Col);
+                   maxItems=Row*Col;
                    create_sparse_matrix(p,maxItems);
                    printf("Successfully created matrix");
                    break;
             case 2:{printf("Enter no of rows :");
-                   scanf("%d",&maxRow);
+                   scanf("%d",&Row);
                    printf("Enter no of columns :");
-                   scanf("%d",&maxCol);
-                   int arr[maxRow][maxCol];
-                   input_normal_matrix(maxRow,maxCol,arr);
-                   print_normal_matrix(maxRow,maxCol,arr);
-                   create_sparse_matrix(p,maxRow*maxCol);
-                   create_sparse_matrix_v2(p,maxRow,maxCol,arr);
+                   scanf("%d",&Col);
+                   maxItems=Row*Col;
+                   if(Row>MAX_ROW||Col>MAX_COL)
+                   {
+                       printf("Rows and Columns maximum value can't exceed 10\n");
+                   }
+                   else
+                   {
+                       int arr[Row][Col];
+                        input_normal_matrix(Row,Col,arr);
+                        print_normal_matrix(Row,Col,arr);
+                        create_sparse_matrix(p,maxItems);
+                        create_sparse_matrix_v2(p,Row,Col,arr);
+                   }
                    break;}
-
-            //case 3:break;
+            case 3:{int non_zero;
+                   printf("Enter no of rows :");
+                   scanf("%d",&Row);
+                   printf("Enter no of columns :");
+                   scanf("%d",&Col);
+                   maxItems=Row*Col;
+                   if(Row>MAX_ROW||Col>MAX_COL)
+                   {
+                       printf("Rows and Columns maximum value can't exceed 10\n");
+                   }
+                   else
+                   {
+                        printf("Enter no of non-zero values :");
+                        scanf("%d",&non_zero);
+                        if(non_zero>Row*Col)
+                        {
+                            printf("Non-zero values can't be more than %d",maxItems);
+                        }
+                        else
+                        {
+                            create_sparse_matrix(p,maxItems);
+                            create_sparse_matrix_v3(p,Row,Col,non_zero);
+                        }
+                   }
+                   break;}
             case 4:if(p[0].value==0)
                     {
                         printf("Can't find transpose since p matrix is null");
@@ -81,20 +114,48 @@ int main()
                         create_sparse_matrix(q,maxItems);
                         transpose(p,q);
                         print_matrix(q,'q');
-                        break;
                     }
+                    break;
 
-            //case 5:break;
-            case 6:{printf("Enter no of rows of second matrix :");
-                   scanf("%d",&maxRow);
-                   printf("Enter no of columns of second matrix :");
-                   scanf("%d",&maxCol);
-                   int arr[maxRow][maxCol];
-                   input_normal_matrix(maxRow,maxCol,arr);
-                   print_normal_matrix(maxRow,maxCol,arr);
-                   create_sparse_matrix(q,maxRow*maxCol);
-                   create_sparse_matrix_v2(q,maxRow,maxCol,arr);
-                   add_sparse_matrix(p,q);
+            case 5:if(p[0].value==0)
+                    {
+                        printf("Can't find transpose since p matrix is null");
+                    }
+                    else
+                    {
+                        create_sparse_matrix(q,maxItems);
+                        fast_transpose(p,q);
+                        print_matrix(q,'q');
+                    }
+                    break;
+            case 6:{if(p[0].value==0)
+                    {
+                        printf("Can't add matrices since p matrix is null");
+                    }
+                    else
+                    {
+                            printf("Enter no of rows of second matrix :");
+                            scanf("%d",&Row);
+                            printf("Enter no of columns of second matrix :");
+                            scanf("%d",&Col);
+                            if(Row>MAX_ROW||Col>MAX_COL)
+                            {
+                                printf("Rows and Columns maximum value can't exceed 10\n");
+                            }
+                            else if(p[0].row!=Row && p[0].col!=Col)
+                            {
+                                printf("Row and columns of both matrix should match to perform addition\n");
+                            }
+                            else
+                            {
+                                    int arr[Row][Col];
+                                    input_normal_matrix(Row,Col,arr);
+                                    print_normal_matrix(Row,Col,arr);
+                                    create_sparse_matrix(q,Row*Col);
+                                    create_sparse_matrix_v2(q,Row,Col,arr);
+                                    add_sparse_matrix(p,q);
+                            }
+                    }
                    break;}
 
             case 7:print_matrix(p,'p');
@@ -137,25 +198,45 @@ void create_sparse_matrix_v2(Term a[],int row,int col,int arr[row][col])
     // a[0] stores the no. of rows and no. of columns and count of non-zero values(in short 'metadata')
     a[0].row=row;
     a[0].col=col;
-    a[0].value=count;
 
     //assigning values to triplets ordered by row and within rows by column
-    int n=1;
         for(int i=0;i<row;i++)
         {
             for(int j=0;j<col;j++)
             {
                 if(arr[i][j]!=0)
                 {
-                    a[n].row=i;
-                    a[n].col=j;
-                    a[n].value=arr[i][j];
-                    n++;
+                    a[++count].row=i;
+                    a[count].col=j;
+                    a[count].value=arr[i][j];
                 }
             }
 
         }
+        a[0].value=count;
     }
+
+//creates a sparse matrix from triplets(from user input)
+void create_sparse_matrix_v3(Term a[],int row,int col,int value)
+{
+    a[0].row=row;
+    a[0].col=col;
+    a[0].value=value;
+
+    //grants user to input the non zero elements triplets <row,col,value>
+    for(int i=1;i<=value;i++)
+    {
+        printf("Enter %d non-zero element row,col and value \n",i);
+        printf("Row :");
+        scanf("%d",&a[i].row);
+        printf("Col :");
+        scanf("%d",&a[i].col);
+        printf("Value :");
+        scanf("%d",&a[i].value);
+    }
+
+    sort_matrix(a);
+}
 
 //grants user to input a matrix
 void input_normal_matrix(int row ,int col,int arr[row][col])
@@ -299,6 +380,53 @@ void add_sparse_matrix(Term a[],Term b[])
 
     //set count of non zero values of sum to n
     sum[0].value=n;
-
+    sort_matrix(sum);
     print_matrix(sum,'s');
+}
+void sort_matrix(Term a[])
+{
+    //sorts the sparse matrix ordered by rows and within rows by column
+    for(int i=1;i<=a[0].value;i++)
+    {
+        //keep track of minimum value of row and column in a[i] element
+        int min_row=a[i].row;
+        int min_col=a[i].col;
+
+        //for swapping
+        int temp_row,temp_col,temp_value;
+
+        for(int j=i+1;j<=a[0].value;j++)  //for row check
+        {
+            for(int k=i+1;k<=a[0].value;k++) //for col check
+            {
+                if(a[j].row<min_row)
+                {
+                    temp_row=a[i].row;
+                    temp_col=a[i].col;
+                    temp_value=a[i].value;
+                    a[i].row=a[j].row;
+                    a[i].col=a[j].col;
+                    a[i].value=a[j].value;
+                    a[j].row=temp_row;
+                    a[j].col=temp_col;
+                    a[j].value=temp_value;
+                    min_row=a[i].row;
+                    if(a[k].col<min_col)
+                    {
+                        temp_row=a[i].row;
+                        temp_col=a[i].col;
+                        temp_value=a[i].value;
+                        a[i].row=a[k].row;
+                        a[i].col=a[k].col;
+                        a[i].value=a[k].value;
+                        a[k].row=temp_row;
+                        a[k].col=temp_col;
+                        a[k].value=temp_value;
+                        min_col=a[k].col;
+                    }
+                }
+
+            }
+        }
+    }
 }
