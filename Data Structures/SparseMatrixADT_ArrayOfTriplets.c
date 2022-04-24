@@ -331,7 +331,7 @@ void fast_transpose(Term a[],Term b[])
     }
 }
 
-//prints addition of two sparse matrix(unsorted)
+//prints addition of two sparse matrix
 void add_sparse_matrix(Term a[],Term b[])
 {
     Term sum[MAX_TERMS];
