@@ -45,7 +45,7 @@ int main()
         printf("2.Create a sparse matrix from given normal matrix\n");
         printf("3.Create a sparse matrix from given set of triplets <row,col,value>\n");
         printf("\nUse option 2 or 3 before selecting following options\n");
-        printf("4.Find transpose of sparse matrix(Use option 2 or 3 before this option)\n");
+        printf("\n4.Find transpose of sparse matrix\n");
         printf("5.Find transpose of sparse matrix (fast method)\n");
         printf("6.Find addition of two sparse matrix\n");
         printf("7.Print matrix\n");
@@ -75,9 +75,11 @@ int main()
                    {
                        int arr[Row][Col];
                         input_normal_matrix(Row,Col,arr);
+                        printf("\nEntered matrix is :\n");
                         print_normal_matrix(Row,Col,arr);
                         create_sparse_matrix(p,maxItems);
                         create_sparse_matrix_v2(p,Row,Col,arr);
+                        printf("Successfully created matrix");
                    }
                    break;}
             case 3:{int non_zero;
@@ -102,6 +104,7 @@ int main()
                         {
                             create_sparse_matrix(p,maxItems);
                             create_sparse_matrix_v3(p,Row,Col,non_zero);
+                            printf("Successfully created matrix");
                         }
                    }
                    break;}
@@ -153,6 +156,8 @@ int main()
                                     print_normal_matrix(Row,Col,arr);
                                     create_sparse_matrix(q,Row*Col);
                                     create_sparse_matrix_v2(q,Row,Col,arr);
+                                    print_matrix(p,'p');
+                                    print_matrix(q,'q');
                                     add_sparse_matrix(p,q);
                             }
                     }
@@ -183,17 +188,8 @@ void create_sparse_matrix(Term a[],int maxItems)
 //creates a sparse matrix from an array
 void create_sparse_matrix_v2(Term a[],int row,int col,int arr[row][col])
 {
+    //This variable stores the count non-zero values
     int count=0;
-
-    //This loops over the normal matrix to count non-zero values
-    for(int i=0;i<row;i++)
-    {
-        for(int j=0;j<col;j++)
-        {
-            if(arr[i][j]!=0)
-            count++;
-        }
-    }
 
     // a[0] stores the no. of rows and no. of columns and count of non-zero values(in short 'metadata')
     a[0].row=row;
@@ -267,11 +263,12 @@ void print_normal_matrix(int row,int col,int arr[row][col])
 //prints sparse matrix
 void print_matrix(Term a[],char name)
 {
-    printf("%c[i]  Row Col Value\n",name);
+    printf("\n%c[i]  Row Col Value\n",name);
     for(int i=0;i<=a[0].value;i++)
     {
         printf("\n%c[%d] = %d   %d    %d",name,i,a[i].row,a[i].col,a[i].value);
     }
+    printf("\n");
 }
 
 //finds transpose of a sparse matrix
@@ -383,50 +380,57 @@ void add_sparse_matrix(Term a[],Term b[])
     sort_matrix(sum);
     print_matrix(sum,'s');
 }
+
+//sorts the sparse matrix ordered by rows and within rows by column
 void sort_matrix(Term a[])
 {
-    //sorts the sparse matrix ordered by rows and within rows by column
     for(int i=1;i<=a[0].value;i++)
     {
-        //keep track of minimum value of row and column in a[i] element
+        //keep track of minimum value of row in a[i] element
         int min_row=a[i].row;
-        int min_col=a[i].col;
+        int min_row_index=i;
 
         //for swapping
         int temp_row,temp_col,temp_value;
 
         for(int j=i+1;j<=a[0].value;j++)  //for row check
         {
-            for(int k=i+1;k<=a[0].value;k++) //for col check
-            {
                 if(a[j].row<min_row)
                 {
-                    temp_row=a[i].row;
-                    temp_col=a[i].col;
-                    temp_value=a[i].value;
-                    a[i].row=a[j].row;
-                    a[i].col=a[j].col;
-                    a[i].value=a[j].value;
-                    a[j].row=temp_row;
-                    a[j].col=temp_col;
-                    a[j].value=temp_value;
-                    min_row=a[i].row;
-                    if(a[k].col<min_col)
-                    {
-                        temp_row=a[i].row;
-                        temp_col=a[i].col;
-                        temp_value=a[i].value;
-                        a[i].row=a[k].row;
-                        a[i].col=a[k].col;
-                        a[i].value=a[k].value;
-                        a[k].row=temp_row;
-                        a[k].col=temp_col;
-                        a[k].value=temp_value;
-                        min_col=a[k].col;
-                    }
+                    min_row_index=j;
+                    min_row=a[j].row;
                 }
+        }
 
+        //Keeps track of minimum column index and column value
+        int min_col_index=min_row_index;
+        int min_col=a[min_row_index].col;
+
+        for(int k=i+1;k<=a[0].value;k++) //for col check
+        {
+            if(a[k].row==a[min_row_index].row && a[k].col<min_col)
+            {
+                min_col_index=k;
+                temp_row=a[min_row_index].row;
+                temp_col=a[min_row_index].col;
+                temp_value=a[min_row_index].value;
+                a[min_row_index].row=a[min_col_index].row;
+                a[min_row_index].col=a[min_col_index].col;
+                a[min_row_index].value=a[min_col_index].value;
+                a[min_col_index].row=temp_row;
+                a[min_col_index].col=temp_col;
+                a[min_col_index].value=temp_value;
+                min_col=a[k].col;
             }
         }
+        temp_row=a[i].row;
+        temp_col=a[i].col;
+        temp_value=a[i].value;
+        a[i].row=a[min_row_index].row;
+        a[i].col=a[min_row_index].col;
+        a[i].value=a[min_row_index].value;
+        a[min_row_index].row=temp_row;
+        a[min_row_index].col=temp_col;
+        a[min_row_index].value=temp_value;
     }
 }
