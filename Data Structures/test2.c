@@ -29,7 +29,7 @@ int main()
       sum=0;
    printf("%d",sum);*/
    /*float a=0.7;
-   double b=0.7;
+   float b=0.7;
    if(a>b)
    printf("A is greater than b");
    else if(b>a)
