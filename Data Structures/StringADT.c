@@ -58,10 +58,6 @@ int main()
                     printf("Pattern not found\n");
                else
                     printf("Pattern found at index : %d",nfind(string1,pat));
-               /*if(>=0)
-                    printf("Pattern %s is found in string %s\n",pat,string1);
-                else
-                    printf("Pattern %s is found in string %s\n",pat,string1);*/
                break;
         case 5:printf("Enter string : ");
                scanf("%s",string1);
