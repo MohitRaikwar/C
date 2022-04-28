@@ -4,6 +4,7 @@
 #include<string.h>
 #include<stdlib.h>
 
+//defining maximum size of array using macro
 #define MAX_SIZE 100
 
 //functions prototpye
@@ -17,7 +18,7 @@ char string2[MAX_SIZE];
 //main function
 int main()
 {
-    char pat[MAX_SIZE],*t;
+    char pat[MAX_SIZE];
     int choice,index;
     printf("1.Create a null string.\n");
     printf("2.Insert a string into another string at ith position.\n");
@@ -105,6 +106,7 @@ void strnins(char *s,char *t,int i)
     }
 }
 
+//pattern matching using nfind
 int nfind(char *string,char *pat)
 {
     int i,j,start=0;
