@@ -18,7 +18,7 @@ char string2[MAX_SIZE];
 //main function
 int main()
 {
-    char pat[MAX_SIZE];
+    char pat[MAX_SIZE],*t;
     int choice,index;
     printf("1.Create a null string.\n");
     printf("2.Insert a string into another string at ith position.\n");
