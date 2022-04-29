@@ -21,12 +21,9 @@ int main()
 //grants user to enter array elements
 void input(int arr[],int size)
 {
-
     for(int i=0;i<size;i++)
-  {
-      printf("Enter %i element :",i+1);
-      scanf("%i",&arr[i]);
-
-  }
-
+    {
+        printf("Enter %i element :",i+1);
+        scanf("%i",&arr[i]);
+    }
 }

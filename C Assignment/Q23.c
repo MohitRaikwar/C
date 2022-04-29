@@ -17,7 +17,7 @@ int main()
     printf("Array before reversing \n");
     print(arr,n);
     reverse(arr,n);
-    printf("Array before reversing \n");
+    printf("Array after reversing \n");
     print(arr,n);
     return 0;
 
@@ -26,13 +26,11 @@ int main()
 //grants user to enter array elements
 void input(int arr[],int size)
 {
-
     for(int i=0;i<size;i++)
-  {
-      printf("Enter %i element :",i+1);
-      scanf("%i",&arr[i]);
-
-  }
+    {
+        printf("Enter %i element :",i+1);
+        scanf("%i",&arr[i]);
+    }
 
 }
 
@@ -41,7 +39,6 @@ void reverse(int arr[],int size)
 {
     for(int i=0;i<size/2;i++)
     {
-
         swap(&arr[i],&arr[size-i-1]);
     }
 }

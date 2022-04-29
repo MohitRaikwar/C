@@ -11,7 +11,7 @@ int main()
     char reverse[length];
     for(int i=0;i<length;i++)
     {
-        str[length-i-1]=tolower(str[length-i-1]);
+        //str[length-i-1]=tolower(str[length-i-1]);
         reverse[i]=str[length-i-1];
     }
     if(strcmp(str,reverse)==0)
