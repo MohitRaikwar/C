@@ -3,9 +3,9 @@ void main()
 {
   int x,y,max;
   printf("Enter first no. :");
-  scanf("%i",&x);
+  scanf("%d",&x);
   printf("Enter second no. :");
-  scanf("%i",&y);
+  scanf("%d",&y);
   max=(x>y)?x:y;
-  printf("Maximum no is :%i",max);
+  printf("Maximum no is :%d",max);
 }

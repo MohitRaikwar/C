@@ -1,5 +1,8 @@
+/*     C program to calculate HCF and LCM of two numbers    */
+
 #include<stdio.h>
 
+//main function
 int main()
 {
     int x,y,LCM,HCF,max;
@@ -10,7 +13,7 @@ int main()
     max=(x>y)?x:y;
     for(int i=1;i<=max;i++)
     {
-        if(x%i==0 && y%i==0)
+        if(x%d==0 && y%d==0)
             HCF=i;
     }
     LCM=(x*y)/HCF;

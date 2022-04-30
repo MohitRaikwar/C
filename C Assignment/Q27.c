@@ -1,6 +1,11 @@
+/*      C program to calculate tax amount       */
+
 #include<stdio.h>
 
+//function prototype
 int calculate_tax(int income);
+
+//main function
 int main()
 {
     int n;
@@ -10,6 +15,7 @@ int main()
     return 0;
 }
 
+//returns total tax amount
 int calculate_tax(int income)
 {
     int taxAmount=0;

@@ -1,3 +1,5 @@
+/*       C program to calculate the area and perimeter of a triangle         */
+
 #include<stdio.h>
 
 //functions prototype
@@ -20,12 +22,14 @@ int main()
     return 0;
 }
 
+//returns  perimeter
 double perim(double a,double b,double c)
 {
     double perimeter =a+b+c;
     return perimeter;
 }
 
+//returns area
 double area(double a,double b,double c)
 {
     double s=0.5*(a+b+c);
@@ -33,6 +37,7 @@ double area(double a,double b,double c)
     return area;
 }
 
+//reads input from user
 double read_input()
 {
    double a;

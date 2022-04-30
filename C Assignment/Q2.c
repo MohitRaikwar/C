@@ -1,3 +1,5 @@
+/*  C program to calculate the mean, variance and standard deviation on a set of values   */
+
 #include<stdio.h>
 #include<math.h>
 
@@ -38,7 +40,7 @@ void input(float arr[],int size)
 {
     for(int i=0;i<size;i++)
     {
-        printf("Enter %i element :",i+1);
-        scanf("%i",&arr[i]);
+        printf("Enter %d element :",i+1);
+        scanf("%f",&arr[i]);
     }
 }

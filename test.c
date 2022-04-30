@@ -8,8 +8,8 @@ long int i;
  printf("Enter card no :");
  scanf("%li",&i);
  printf("%li",i);
- printf("\nNo. of digits :%i",digitcalc(i));
- printf("\nType:%i",cardtype(i));
+ printf("\nNo. of digits :%d",digitcalc(i));
+ printf("\nType:%d",cardtype(i));
 }
 int cardtype(long int n)
 {

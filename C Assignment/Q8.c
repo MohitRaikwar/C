@@ -1,3 +1,5 @@
+/*      C program to check if a number is triangular number or not     */
+
 #include<stdio.h>
 
 //function prototype

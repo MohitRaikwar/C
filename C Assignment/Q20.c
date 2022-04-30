@@ -1,5 +1,8 @@
+/*      C program to print two digits no. whose sum of both digits is multiple of 7     */
+
 #include<stdio.h>
 
+//main function
 int main()
 {
     int temp,sum;

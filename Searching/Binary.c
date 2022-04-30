@@ -5,15 +5,15 @@ int main()
     int arr[]={1,2,3,4,5};
     int num;
     printf("Enter any no. to search :"); 
-    scanf("%i",&num);
-    printf("Entered no. is :%i\n",num);
+    scanf("%d",&num);
+    printf("Entered no. is :%d\n",num);
     int result = binary(arr,0,sizeof(arr)/sizeof(int),num);
     if(result==-1)
 
-     printf("%i is not found..",num);
+     printf("%d is not found..",num);
     
     else
-     printf("%i is found at index :%i\n",num,result);
+     printf("%d is found at index :%d\n",num,result);
     return 0;
 
 }

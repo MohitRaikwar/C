@@ -1,6 +1,9 @@
+/*      C program to print binary representation of a positive integer     */
+
 #include<stdio.h>
 #include<math.h>
 
+//main function
 int main()
 {
     int n;

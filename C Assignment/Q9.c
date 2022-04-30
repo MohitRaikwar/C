@@ -1,13 +1,17 @@
+/*      C program to find reverse of an integer number     */
+
 #include<stdio.h>
 #include<math.h>
 
+//main function
 int main()
 {
-    int n,reverse=0;
+    int n,temp,count=0,reverse=0;
     printf("Enter any number :");
     scanf("%d",&n);
-    int temp=n;
-    int count=0;
+    temp=n;
+
+    //calculates total no. of digits in n
     for(int i=n;i!=0;count++)
     {
         i/=10;

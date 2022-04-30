@@ -1,3 +1,5 @@
+/*      C program to reverse an array        */
+
 #include<stdio.h>
 
 //functions prototype
@@ -28,8 +30,8 @@ void input(int arr[],int size)
 {
     for(int i=0;i<size;i++)
     {
-        printf("Enter %i element :",i+1);
-        scanf("%i",&arr[i]);
+        printf("Enter %d element :",i+1);
+        scanf("%d",&arr[i]);
     }
 
 }
@@ -48,7 +50,7 @@ void print(int arr[],int size)
 {
     for(int i=0;i<size;i++)
     {
-      printf("%i  ",arr[i]);
+      printf("%d  ",arr[i]);
     }
     printf("\n");
 }

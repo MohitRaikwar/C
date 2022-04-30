@@ -1,5 +1,8 @@
+/*      C program to calculate gross salary of an employee from basic salary      */
+
 #include<stdio.h>
 
+//main function
 int main()
 {
     float basicSalary,grossSalary,HRA,DA;

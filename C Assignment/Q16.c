@@ -1,4 +1,8 @@
+/*      C program to display the number of even , odd and negative numbers in an array    */
+
 #include<stdio.h>
+
+//declaring maximum size of array using macro
 #define MAX_SIZE 10
 
 //functions prototype
@@ -44,7 +48,7 @@ void input(int arr[],int size)
 {
     for(int i=0;i<size;i++)
     {
-        printf("Enter %i element :",i+1);
-        scanf("%i",&arr[i]);
+        printf("Enter %d element :",i+1);
+        scanf("%d",&arr[i]);
     }
 }

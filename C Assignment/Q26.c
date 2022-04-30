@@ -1,7 +1,15 @@
+/*      C program  to compute array addition(A[i]+B[i]) and array multiplication(A[i]*B[i])     */
+
 #include<stdio.h>
+
+//macro definiton
 #define MAX_SIZE 100
+
+//functions prototype
 void input(int arr[],int size);
 void print(int arr[],int size);
+
+//main function
 int main()
 {
     int m,n,A[MAX_SIZE],B[MAX_SIZE];
@@ -35,14 +43,11 @@ int main()
 //grants user to enter array elements
 void input(int arr[],int size)
 {
-
     for(int i=0;i<size;i++)
-  {
-      printf("Enter %i element :",i+1);
-      scanf("%i",&arr[i]);
-
-  }
-
+    {
+        printf("Enter %d element :",i+1);
+        scanf("%d",&arr[i]);
+    }
 }
 
 //prints the array
@@ -50,7 +55,7 @@ void print(int arr[],int size)
 {
     for(int i=0;i<size;i++)
     {
-      printf("%i  ",arr[i]);
+      printf("%d  ",arr[i]);
     }
     printf("\n");
 }

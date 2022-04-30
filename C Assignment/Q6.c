@@ -1,6 +1,11 @@
+/*     C program to check a given pair of numbers is Amicable or not    */
+
 #include<stdio.h>
 
+//function prototype
 int is_Amicable(int n1,int n2);
+
+//main function
 int main()
 {
     int num1,num2;
@@ -9,23 +14,19 @@ int main()
     printf("Enter second number :");
     scanf("%d",&num2);
     if(is_Amicable(num1,num2))
-    {
         printf("%d and %d are amicable number\n",num1,num2);
-    }
     else
-    {
         printf("%d and %d are not amicable number\n",num1,num2);
-    }
-
     return 0;
 }
 
+//checks if pair(n1,n2) are amicable or not
 int is_Amicable(int n1,int n2)
 {
     int sum1=0,sum2=0;
     for(int i=1;i<=n1/2;i++)
     {
-        if(n1%i==0)
+        if(n1%d==0)
             sum1+=i;
     }
     for(int j=1;j<=n2/2;j++)

@@ -1,3 +1,5 @@
+/*      C program to print fahrenheit to centigrade table       */
+
 #include<stdio.h>
 
 //function prototype

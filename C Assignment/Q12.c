@@ -1,3 +1,5 @@
+/*      C program to calculates the sum of prices of items   */
+
 #include<stdio.h>
 
 typedef struct Items
@@ -40,7 +42,7 @@ void input_items(Items item[],int n)
 //prints items,total amount ,discounted amount and grand total
 void print_items(Items item[],int n)
 {
-    int price,quantity,subtotal;
+    int price,quantity,subtotal,total,discount,discountAmount,grandTotal;
     printf("Items   Price   Quantity   Subtotal\n");
     for(int i=0;i<n;i++)
     {
@@ -50,11 +52,11 @@ void print_items(Items item[],int n)
         printf("Item %-3d %-10d %-6d %4d\n",i+1,price,quantity,subtotal);
     }
     printf("---------------------------------\n");
-    int total=sum_items(item,n);
+    total=sum_items(item,n);
     printf("TOTAL : %d\n",total);
-    int discount=calculate_discount(item,n);
-    int discountAmount=total*discount/100;
-    int grandTotal=total-discountAmount;
+    discount=calculate_discount(item,n);
+    discountAmount=total*discount/100;
+    grandTotal=total-discountAmount;
     printf("DISCOUNT %d%% : %d\n",discount,discountAmount);
     printf("GRAND TOTAL : %d\n",grandTotal);
     printf("----------------------------------\n");

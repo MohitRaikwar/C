@@ -43,7 +43,7 @@ int main()
     printf("8.Print polynomial\n");
     printf("9.Exit\n");
     printf("\nEnter your choice :");
-    scanf("%i",&choice);
+    scanf("%d",&choice);
     switch(choice)
     {
         case 1:zero_polynomial(&p1);

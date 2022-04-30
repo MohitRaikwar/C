@@ -1,7 +1,11 @@
+/* C program to print total electricity bill amount */
+
 #include<stdio.h>
 
+//function prototype
 float total_amount(int unit);
 
+//main function
 int main()
 {
     int units;
@@ -11,6 +15,7 @@ int main()
     return 0;
 }
 
+//returns total bill amount
 float total_amount(int unit)
 {
     float amount=0;

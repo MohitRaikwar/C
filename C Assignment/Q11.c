@@ -1,3 +1,5 @@
+/*   C program to calculate sum of all even and odd numbers in an array and prints out the larger sum  */
+
 #include<stdio.h>
 
 //functions prototype
@@ -9,7 +11,7 @@ int main()
 {
     int size;
     printf("Enter size of array :");
-    scanf("%i",&size);
+    scanf("%d",&size);
     int arr[size];
     input(arr,size);
     printf("Output : %d\n",find_sum(arr,size));
@@ -21,8 +23,8 @@ void input(int arr[],int size)
 {
     for(int i=0;i<size;i++)
     {
-        printf("Enter %i element :",i+1);
-        scanf("%i",&arr[i]);
+        printf("Enter %d element :",i+1);
+        scanf("%d",&arr[i]);
     }
 }
 

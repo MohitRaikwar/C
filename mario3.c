@@ -5,7 +5,7 @@ void main(void)
     int n;
     do{
         printf("Enter any positive no. :");
-        scanf("%i",&n);
+        scanf("%d",&n);
 
     }while(n<1);
     builder(n);

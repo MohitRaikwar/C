@@ -1,25 +1,41 @@
+/* C program to print following pattern*/
+/* Pattern 1    Pattern 2
+   1            1
+   12           22
+   123          333
+   ....          ....
+         upto n         */
+
 #include<stdio.h>
 
+//main function
 int main()
 {
-    int n,k;
+    int n,choice;
     printf("Enter no. : ");
     scanf("%d",&n);
-    for(int x=1;x<=n;x++)
+    printf("1.Pattern 1\n");
+    printf("2.Pattern 2\n");
+    printf("Enter your choice : ");
+    scanf("%d",&choice);
+    switch (choice)
     {
-        k=1;
-        for(int i=1;i<=2*x;i++)
-        {
-            if(k==x)
-                printf("%d",k);
-            else
+    case 1:for(int i=1;i<=n;i++)
             {
-                printf("%d",k);
-                k++;
+                for(int j=1;j<=i;j++)
+                    printf("%d",j);
+                printf("\n");
             }
-        }
-        printf("\n");
-
+        break;
+    case 2:for(int i=1;i<=n;i++)
+            {
+                for(int j=1;j<=i;j++)
+                    printf("%d",i);
+                printf("\n");
+            }
+        break;
+    default:printf("Wrong choice\n");
+        break;
     }
     return 0;
 }

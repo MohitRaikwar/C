@@ -12,7 +12,7 @@ int main()
 {
     int size;
     printf("Enter size of array :");
-    scanf("%i",&size);
+    scanf("%d",&size);
     int arr[size];
     input(arr,size);
     printf("Before sorting\n");
@@ -42,7 +42,7 @@ void Bubble_Sort(int arr[],int size)
         }
 
        //Swapping minimum element to i th index
-       printf("After %i pass\n",i+1);
+       printf("After %d pass\n",i+1);
        print(arr,size);
 
        //If no elements were swapped that means array is already sorted
@@ -64,7 +64,7 @@ void print(int arr[],int size)
 {
     for(int i=0;i<size;i++)
     {
-      printf("%i  ",arr[i]);
+      printf("%d  ",arr[i]);
     }
     printf("\n");
 }
@@ -75,8 +75,8 @@ void input(int arr[],int size)
 
     for(int i=0;i<size;i++)
   {
-      printf("Enter %i element :",i+1);
-      scanf("%i",&arr[i]);
+      printf("Enter %d element :",i+1);
+      scanf("%d",&arr[i]);
 
   }
 

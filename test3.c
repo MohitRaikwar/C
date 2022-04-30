@@ -5,6 +5,6 @@ int main()
   char C;
   printf("Enter any character :");
   scanf("%c",&C);
-  printf("\noutput :%i",islower(C));
+  printf("\noutput :%d",islower(C));
   
 }

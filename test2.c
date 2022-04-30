@@ -3,7 +3,7 @@ void main()
 {
  int n;
  printf("Enter any no :");
- scanf("%i",&n);
+ scanf("%d",&n);
  switch(n)
  {
   case 0:printf("0");

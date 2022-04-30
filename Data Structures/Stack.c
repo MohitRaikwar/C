@@ -27,12 +27,12 @@ int main()
     printf("4.Get top element\n");
     printf("5.Exit\n");
     printf("\nEnter your choice :");
-    scanf("%i",&choice);
+    scanf("%d",&choice);
     switch (choice)
     {
     case 1:
            printf("\nEnter number to push into Stack :");
-           scanf("%i",&n);
+           scanf("%d",&n);
            push(&Stack,n);
            break;
     case 2:pop(&Stack);
@@ -82,7 +82,7 @@ void show_stack(node** ptr)
     else
      for(node* tmp=*ptr;tmp!=NULL;tmp=tmp->next)
       {
-        printf("%i\n",tmp->number);
+        printf("%d\n",tmp->number);
       }
 }
 void free_stack(node** ptr)
@@ -107,6 +107,6 @@ void getTop(node** ptr)
   if(is_empty(ptr))
   printf("Stack is empty\n");
   else
-  printf("%i",(*ptr)->number);
+  printf("%d",(*ptr)->number);
 
 }

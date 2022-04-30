@@ -22,17 +22,17 @@ int main()
     printf("3.Show list\n");
     printf("4.Exit\n");
     printf("\nEnter your choice :");
-    scanf("%i",&choice);
+    scanf("%d",&choice);
     switch (choice)
     {
     case 1:
            printf("\nEnter number to insert :");
-           scanf("%i",&n);
+           scanf("%d",&n);
            insert_at_first(&list,n);
            break;
     case 2:
            printf("\nEnter number to insert :");
-           scanf("%i",&n);
+           scanf("%d",&n);
            insert_at_last(&list,n);
            break;
     case 3:show_list(&list);
@@ -91,7 +91,7 @@ void show_list(node**list)
     else
      for(node* tmp=*list;tmp!=NULL;tmp=tmp->next)
       {
-        printf("%i\n",tmp->number);
+        printf("%d\n",tmp->number);
       }
 }
 void free_list(node** list)

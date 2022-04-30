@@ -1,7 +1,13 @@
+/* C program to check if a string is palindrome or not */
+/*          Note : Case Sensitive                      */
+
 #include<stdio.h>
 #include<string.h>
-#include<ctype.h>
+
+//declaring maximum size of array using macro
 #define MAX_SIZE 50
+
+//main function
 int main()
 {
     char str[MAX_SIZE];
@@ -11,7 +17,6 @@ int main()
     char reverse[length];
     for(int i=0;i<length;i++)
     {
-        //str[length-i-1]=tolower(str[length-i-1]);
         reverse[i]=str[length-i-1];
     }
     if(strcmp(str,reverse)==0)

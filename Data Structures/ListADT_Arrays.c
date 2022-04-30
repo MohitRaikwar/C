@@ -34,7 +34,7 @@ int main()
     printf("7.Traverse the items in the list from left to right\n");
     printf("8.Exit\n");
     printf("\nEnter your choice :");
-    scanf("%i",&choice);
+    scanf("%d",&choice);
     switch (choice)
     {
     case 1:create();

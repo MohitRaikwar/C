@@ -10,7 +10,7 @@ void main()
  printf("Enter card no :");
  scanf("%li",&i);
  printf("%li",i);
- printf("\nNo. of digits :%i",digitcalc(i));
+ printf("\nNo. of digits :%d",digitcalc(i));
  checkcard(i);
 
 
@@ -46,8 +46,8 @@ void checkcard(long int n)
       temp/=10;
     }while(temp!=0);
   int sum=sum1+sum2;
-  printf("\nSum1=%i",sum1);
-  printf("\nSum2=%i",sum2);
+  printf("\nSum1=%d",sum1);
+  printf("\nSum2=%d",sum2);
   type=cardtype(n);
   if((sum%10)==0 && (type!=0))
   {

@@ -1,5 +1,8 @@
+/*      C program to print inverted half pyramid of *(mirror)*/
+
 #include<stdio.h>
 
+//main function
 int main()
 {
     int n;
@@ -12,7 +15,7 @@ int main()
     for(int x=0;x<n;x++)
     {
         for(int j=0;j<x;j++)
-            printf("_");
+            printf(" ");
         for(int k=0;k<(n-x);k++)
             printf("*");
         printf("\n");

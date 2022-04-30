@@ -1,8 +1,11 @@
+/*      C program to print the sum of product of consecutive numbers in an array         */
+
 #include<stdio.h>
 
 //functions prototype
 void input(int arr[],int size);
 
+//main function
 int main()
 {
     int n,sum=0;
@@ -23,7 +26,7 @@ void input(int arr[],int size)
 {
     for(int i=0;i<size;i++)
     {
-        printf("Enter %i element :",i+1);
-        scanf("%i",&arr[i]);
+        printf("Enter %d element :",i+1);
+        scanf("%d",&arr[i]);
     }
 }

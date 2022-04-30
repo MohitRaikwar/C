@@ -1,3 +1,5 @@
+/*      C program to check if a number consists of three consecutive 5s     */
+
 #include<stdio.h>
 
 //main function

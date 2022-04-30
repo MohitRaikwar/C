@@ -15,7 +15,7 @@ int main()
     list=insert(list,2);
     for(node* tmp=list;tmp!=NULL;tmp=tmp->next)
   {
-    printf("%i\n",tmp->number);
+    printf("%d\n",tmp->number);
   }
 
   while(list!=NULL)
