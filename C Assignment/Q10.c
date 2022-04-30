@@ -4,7 +4,7 @@
 #include<stdbool.h>
 
 //functions prototype
-void Bubble_Sort(int arr[],int size);
+void bubble_sort(int arr[],int size);
 void input(int arr[],int size);
 void swap(int *a,int *b);
 void print(int arr[],int size);
@@ -19,14 +19,14 @@ int main()
     input(arr,size);
     printf("Before sorting\n");
     print(arr,size);
-    Bubble_Sort(arr,size);
+    bubble_sort(arr,size);
     printf("After sorting\n");
     print(arr,size);
     return 0;
 }
 
 //sorts array using bubble sort algorithm
-void Bubble_Sort(int arr[],int size)
+void bubble_sort(int arr[],int size)
 {
     bool swapped;
     for(int i=0;i<size-1;i++)     //size-1 for unnecessary going for last+1 element in j loop

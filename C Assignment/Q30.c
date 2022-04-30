@@ -1,12 +1,17 @@
+/*      C program to implement bubble sort , insertion sort and binary search   */
+
 #include<stdio.h>
 #include<stdbool.h>
 
 //functions prototype
-void Bubble_Sort(int arr[],int size);
+void bubble_sort(int arr[],int size);
+void insertion_sort(int arr[],int size);
 int binary_search(int arr[],int l,int r,int num);
 void input(int arr[],int size);
 void swap(int *a,int *b);
 void print(int arr[],int size);
+
+int i,j;
 
 //main function
 int main()
@@ -26,11 +31,16 @@ int main()
     {
         case 1:printf("Before sorting\n");
                print(arr,size);
-               Bubble_Sort(arr,size);
+               bubble_sort(arr,size);
                printf("After sorting\n");
                print(arr,size);
                break;
-        case 2:break;
+        case 2:printf("Before sorting\n");
+               print(arr,size);
+               insertion_sort(arr,size);
+               printf("After sorting\n");
+               print(arr,size);
+               break;
         case 3:printf("Enter any no. to search :");
                scanf("%d",&num);
                int result = binary_search(arr,0,size,num);
@@ -46,13 +56,13 @@ int main()
 }
 
 //sorts array using bubble sort algorithm
-void Bubble_Sort(int arr[],int size)
+void bubble_sort(int arr[],int size)
 {
     bool swapped;
-    for(int i=0;i<size-1;i++)     //size-1 for unnecessary going for last+1 element in j loop
+    for(i=0;i<size-1;i++)     //size-1 for unnecessary going for last+1 element in j loop
     {
 
-        for(int j=0;j<(size-i-1);j++)
+        for(j=0;j<(size-i-1);j++)
         {
             swapped=false;
             if(arr[j]>arr[j+1])  //Searching for minimum no. and then updating it
@@ -62,14 +72,29 @@ void Bubble_Sort(int arr[],int size)
 
             }
         }
-
-       //Swapping minimum element to i th index
        printf("After %d pass\n",i+1);
        print(arr,size);
 
        //If no elements were swapped that means array is already sorted
        if(swapped==false)
        break;
+    }
+}
+
+//sorts array using insertion sort algorithm
+void insertion_sort(int arr[],int size)
+{
+    int key;
+    for(i=1;i<size;i++)
+    {
+        key=arr[i];
+        j=i-1;
+        while(j>=0 && arr[j]>key)
+        {
+            arr[j+1]=arr[j];
+            j--;
+        }
+        arr[j+1]=key;
     }
 }
 
@@ -81,9 +106,9 @@ int binary_search(int arr[],int l,int r,int num)
         if(arr[mid]==num)
             return mid;
         if(arr[mid]>num)
-            return binary(arr,l,mid-1,num);
+            return binary_search(arr,l,mid-1,num);
         else
-            return binary(arr,mid+1,r,num);
+            return binary_search(arr,mid+1,r,num);
     }
         return -1; //if not found
 }
@@ -99,7 +124,7 @@ void swap(int *a,int *b)
 //prints the array
 void print(int arr[],int size)
 {
-    for(int i=0;i<size;i++)
+    for(i=0;i<size;i++)
     {
       printf("%d  ",arr[i]);
     }
@@ -110,7 +135,7 @@ void print(int arr[],int size)
 void input(int arr[],int size)
 {
 
-    for(int i=0;i<size;i++)
+    for(i=0;i<size;i++)
   {
       printf("Enter %d element :",i+1);
       scanf("%d",&arr[i]);

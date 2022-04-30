@@ -1,7 +1,7 @@
-//C program to
+/*      C program to print no. of ugly prime numbers in a number    */
 
 #include<stdio.h>
-#include<stdbool.h>
+#include<stdbool.h> //for bool data type
 
 //main function
 int main()
@@ -11,21 +11,27 @@ int main()
     printf("Enter a no. : ");
     scanf("%d",&n);
     temp=n;
-    for(int j=1;j<temp/2&&temp!=0;j++)
-    for(int i=1;i<temp;i++)
+    while(temp!=1)
     {
-        if(temp%d==0)
+        if(temp%2==0)
         {
-            if(i==2 || i==3 || i==5)
-            {
-                temp/=2;
-                count++;
-            }
-            else
-            {
-                otherFactors=true;
-                temp/=i;
-            }
+            temp/=2;
+            count++;
+        }
+        else if(temp%3==0)
+        {
+            temp/=3;
+            count++;
+        }
+        else if(temp%5==0)
+        {
+            temp/=5;
+            count++;
+        }
+        else
+        {
+            otherFactors=true;
+            break;
         }
     }
     if(!otherFactors)
