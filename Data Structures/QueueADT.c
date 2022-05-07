@@ -43,7 +43,7 @@ int main()
             case 3:if(!(front==rear))
                         printf("Element at front : %d",arr[front]);
                     else
-                        printf("Can't get first element because queue is empty\n");
+                        printf("Can't get front element because queue is empty\n");
                     break;
             case 4:if(!(front==rear))
                         print_queue(arr);
