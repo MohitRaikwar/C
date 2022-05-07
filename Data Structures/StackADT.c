@@ -2,7 +2,7 @@
 #include<stdlib.h>
 
 //Function prototypes
-void push(int a[],int n,int size);
+void push(int a[],int n,int *size);
 void pop(int a[]);
 void print_stack(int a[]);
 
@@ -30,7 +30,7 @@ int main()
         {
             case 1:printf("Enter number to push : ");
                    scanf("%d",&num);
-                   push(arr,num,capacity);
+                   push(arr,num,&capacity);
                    break;
             case 2:pop(arr);
                    break;
@@ -50,12 +50,13 @@ int main()
 
 /*  Pushes element n to the stack
     If stack overflow occurs then doubles the size of the stack   */
-void push(int a[],int n,int size)
+void push(int a[],int n,int *size)
 {
-    if(top>=size-1)
+    if(top>=(*size)-1)
     {
         printf("Stack Overflow\n");
-        int *temp=realloc(a,2*size*sizeof(int));
+        *size=2*(*size);
+        int *temp=realloc(a,(*size)*sizeof(int));
         if(temp==NULL)
         {
             free(a);
