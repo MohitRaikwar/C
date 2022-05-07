@@ -99,7 +99,7 @@ void print_queue(int a[])
     {
         for(int i=front;i<=rear;i++)
             printf("%d  ",a[i]);
-    printf("\n");
+        printf("\n");
     }
 }
 
