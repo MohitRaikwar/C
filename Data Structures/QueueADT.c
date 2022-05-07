@@ -1,14 +1,18 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+//Macro
 #define MAX_SIZE 10
 
+//Function protoypes
 int dequeue(int a[]);
 int enqueue(int a[],int n);
 void print_queue(int a[]);
 
+//Keeps track of front and rear elements of queue
 int front=0,rear=0;
 
+//Main function
 int main()
 {
     int arr[MAX_SIZE],choice,num;
@@ -55,6 +59,7 @@ int main()
     return 0;
 }
 
+//Dequeues front element of queue
 int dequeue(int a[])
 {
     int first=a[0];
@@ -64,6 +69,7 @@ int dequeue(int a[])
     return first;
 }
 
+//Enqueue element to rear of the queue
 int enqueue(int a[],int n)
 {
     if(rear<MAX_SIZE)
@@ -74,6 +80,7 @@ int enqueue(int a[],int n)
     else return 0;
 }
 
+//Prints the elements of queue
 void print_queue(int a[])
 {
     for(int i=0;i<rear;i++)

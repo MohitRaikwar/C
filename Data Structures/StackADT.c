@@ -1,12 +1,15 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+//Function prototypes
 void push(int a[],int n,int size);
 void pop(int a[]);
 void print_stack(int a[]);
 
+//Keep tracks of top element of stack
 int top=-1;
 
+//Main function
 int main()
 {
     int capacity,choice,num;
@@ -41,21 +44,27 @@ int main()
                     break;
         }
     }
+    free(arr);
     return 0;
 }
 
+/*  Pushes element n to the stack
+    If stack overflow occurs then doubles the size of the stack   */
 void push(int a[],int n,int size)
 {
     if(top>=size-1)
     {
         printf("Stack Overflow\n");
-        int *temp=(int*)calloc(2*sizeof(a),sizeof(int));
-        for(int i=0;i<=top;i++)
-            temp[i]=a[i];
+        int *temp=realloc(a,2*size*sizeof(int));
+        if(temp==NULL)
+        {
+            free(a);
+            return;
+        }
+        else
+            printf("Successfully doubled size of stack\n");
         temp[++top]=n;
         a=temp;
-        print_stack(a);
-        //a=temp;
         printf("Successfully pushed %d to stack",n);
     }
     else
@@ -64,6 +73,8 @@ void push(int a[],int n,int size)
         printf("Successfully pushed %d to stack",n);
     }
 }
+
+//Pops out the top element of the stack
 void pop(int a[])
 {
     if(top<0)
@@ -72,6 +83,7 @@ void pop(int a[])
         printf("Popped element is : %d\n",a[top--]);
 }
 
+//Prints the elements of stack
 void print_stack(int a[])
 {
     for(int i=top;i>=0;i--)
