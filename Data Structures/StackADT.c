@@ -15,7 +15,7 @@ int main()
     int capacity,choice,num;
     printf("Enter size of stack : ");
     scanf("%d",&capacity);
-    int *arr=(int*)calloc(sizeof(int)*capacity,sizeof(int));
+    int *stack=(int*)calloc(sizeof(int)*capacity,sizeof(int));
     while(1)
     {
         printf("\nSelect from following options :\n\n");
@@ -30,13 +30,13 @@ int main()
         {
             case 1:printf("Enter number to push : ");
                    scanf("%d",&num);
-                   push(arr,num,&capacity);
+                   push(stack,num,&capacity);
                    break;
-            case 2:pop(arr);
+            case 2:pop(stack);
                    break;
-            case 3:printf("Top element of stack : %d",arr[top]);
+            case 3:printf("Top element of stack : %d",stack[top]);
                    break;
-            case 4:print_stack(arr);
+            case 4:print_stack(stack);
                    break;
             case 5:exit(0);
                    break;
@@ -44,7 +44,7 @@ int main()
                     break;
         }
     }
-    free(arr);
+    free(stack);
     return 0;
 }
 
