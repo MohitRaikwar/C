@@ -11,7 +11,7 @@ int main()
     int units;
     printf("Enter no.of units consumed : ");
     scanf("%d",&units);
-    printf("Total : %f\n",total_amount(units));
+    printf("Total charge amount : %.2f\n",total_amount(units));
     return 0;
 }
 

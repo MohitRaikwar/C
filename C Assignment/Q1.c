@@ -10,8 +10,13 @@ int is_Armstrong(int n);
 int main()
 {
     int n;
-    printf("Enter a number :");
-    scanf("%d",&n);
+    do
+    {
+        printf("Enter a number :");
+        scanf("%d",&n);
+        if(n<0)
+            printf("Please enter a positive integer.\n");
+    }while(n<0);
     if(is_Armstrong(n))
         printf("%d is armstrong number\n",n);
     else

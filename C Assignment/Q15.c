@@ -12,30 +12,24 @@
 int main()
 {
     int n,choice;
-    printf("Enter no. : ");
-    scanf("%d",&n);
-    printf("1.Pattern 1\n");
-    printf("2.Pattern 2\n");
-    printf("Enter your choice : ");
-    scanf("%d",&choice);
-    switch (choice)
+    do
     {
-    case 1:for(int i=1;i<=n;i++)
-            {
-                for(int j=1;j<=i;j++)
-                    printf("%d",j);
-                printf("\n");
-            }
-        break;
-    case 2:for(int i=1;i<=n;i++)
-            {
-                for(int j=1;j<=i;j++)
-                    printf("%d",i);
-                printf("\n");
-            }
-        break;
-    default:printf("Wrong choice\n");
-        break;
+        printf("Enter no. : ");
+        scanf("%d",&n);
+    } while (n<1);
+    printf("Pattern 1\n");
+    for(int i=1;i<=n;i++)
+    {
+        for(int j=1;j<=i;j++)
+            printf("%d",j);
+        printf("\n");
+    }
+    printf("\nPattern 2\n");
+    for(int i=1;i<=n;i++)
+    {
+        for(int j=1;j<=i;j++)
+            printf("%d",i);
+        printf("\n");
     }
     return 0;
 }

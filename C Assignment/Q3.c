@@ -13,7 +13,7 @@ int main()
     max=(x>y)?x:y;
     for(int i=1;i<=max;i++)
     {
-        if(x%d==0 && y%d==0)
+        if(x%i==0 && y%i==0)
             HCF=i;
     }
     LCM=(x*y)/HCF;

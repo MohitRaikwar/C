@@ -8,11 +8,14 @@
 //functions prototype
 void input(int arr[],int size);
 void print(int arr[],int size);
+void set_zero(int arr[]);
 
 //main function
 int main()
 {
     int m,n,A[MAX_SIZE],B[MAX_SIZE];
+    set_zero(A);
+    set_zero(B);
     printf("Enter size of first array : ");
     scanf("%d",&m);
     printf("Enter first array elements \n");
@@ -58,4 +61,11 @@ void print(int arr[],int size)
       printf("%d  ",arr[i]);
     }
     printf("\n");
+}
+
+//set all index elements value to zero
+void set_zero(int arr[])
+{
+    for(int i=0;i<MAX_SIZE;i++)
+        arr[i]=0;
 }

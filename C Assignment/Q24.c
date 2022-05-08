@@ -3,6 +3,7 @@
 
 #include<stdio.h>
 #include<string.h>
+#include<stdbool.h>
 
 //declaring maximum size of array using macro
 #define MAX_SIZE 50
@@ -11,15 +12,19 @@
 int main()
 {
     char str[MAX_SIZE];
+    bool isPalindrome=true;
     printf("Enter a string : ");
     scanf("%s",str);
     int length=strlen(str);
-    char reverse[length];
     for(int i=0;i<length;i++)
     {
-        reverse[i]=str[length-i-1];
+        if(str[i]!=str[length-i-1])
+        {
+            isPalindrome=false;
+            break;
+        }
     }
-    if(strcmp(str,reverse)==0)
+    if(isPalindrome)
         printf("Palindrome\n");
     else
         printf("Not palindrome\n");

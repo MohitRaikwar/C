@@ -8,7 +8,7 @@ int main()
     int n;
     do
     {
-        printf("Enter n :");
+        printf("Enter value for n : ");
         scanf("%d",&n);
     } while (n<1);
 
@@ -20,4 +20,5 @@ int main()
             printf("*");
         printf("\n");
     }
+    return 0;
 }

@@ -10,7 +10,6 @@ int main()
     scanf("%d",&n);
     while(n!=0)
     {
-
         if(n%10==5)
         {
             count=0;

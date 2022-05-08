@@ -1,6 +1,7 @@
 /*       C program to calculate the area and perimeter of a triangle         */
 
 #include<stdio.h>
+#include<math.h>
 
 //functions prototype
 double read_input();
@@ -17,8 +18,10 @@ int main()
     b=read_input();
     printf("c : ");
     c=read_input();
-    printf("Perimeter of trinagle : %lf\n",print_value(perim(a,b,c)));
-    printf("Area of trinagle : %lf\n",print_value(area(a,b,c)));
+    printf("Perimeter of triangle : ");
+    print_value(perim(a,b,c));
+    printf("Area of triangle : ");
+    print_value(area(a,b,c));
     return 0;
 }
 
@@ -48,6 +51,6 @@ double read_input()
 
 double print_value(double val)
 {
-    return val;
+    printf("%.2lf\n",val);
 }
 

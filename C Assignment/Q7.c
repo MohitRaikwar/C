@@ -11,7 +11,7 @@ int main()
     {
         printf("Enter a positive integer : ");
         scanf("%d",&n);
-    } while (n<0);
+    } while (n<1);
 
     int temp=n,rem,binary=0;
     for(int i=0;temp!=0;i++)

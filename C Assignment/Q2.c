@@ -11,8 +11,11 @@ int main()
 {
     int n;
     float mean=0,variance=0,stdDeviation;
-    printf("Enter no. of elements :");
-    scanf("%d",&n);
+    do
+    {
+        printf("Enter no. of elements :");
+        scanf("%d",&n);
+    } while (n<1);
     float arr[n];
     input(arr,n);
 

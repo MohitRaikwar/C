@@ -21,8 +21,8 @@ int main()
     scanf("%d",&size);
     int arr[size];
     input(arr,size);
-    printf("Select from following options\n");
-    printf("1.Sort array using bubble sort\n");
+    printf("\nSelect from following options\n");
+    printf("\n1.Sort array using bubble sort\n");
     printf("2.Sort array using insertion sort\n");
     printf("3.Find an element in array using binary search\n");
     printf("Enter your choice : ");
@@ -134,12 +134,9 @@ void print(int arr[],int size)
 //grants user to enter array elements
 void input(int arr[],int size)
 {
-
     for(i=0;i<size;i++)
-  {
+    {
       printf("Enter %d element :",i+1);
       scanf("%d",&arr[i]);
-
-  }
-
+    }
 }

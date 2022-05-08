@@ -57,7 +57,7 @@ void print_items(Items item[],int n)
     discount=calculate_discount(item,n);
     discountAmount=total*discount/100;
     grandTotal=total-discountAmount;
-    printf("DISCOUNT %d%% : %d\n",discount,discountAmount);
+    printf("DISCOUNT %d%% : -%d\n",discount,discountAmount);
     printf("GRAND TOTAL : %d\n",grandTotal);
     printf("----------------------------------\n");
 }

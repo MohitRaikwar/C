@@ -40,7 +40,6 @@ int main()
     printf("Odd count : %d\n",countOdd);
     printf("Negative count : %d\n",countNegative);
     return 0;
-
 }
 
 //grants user to enter array elements

@@ -13,6 +13,7 @@ int main()
         scanf("%d",&n);
     } while (n<1);
 
+    printf("Series : ");
     for(int i=0;i<n;i++)
     {
         num=pow(10,i)+prev;

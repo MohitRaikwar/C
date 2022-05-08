@@ -30,7 +30,7 @@ int main()
     {
         case 1:printf("Enter side of cube : ");
                scanf("%f",&l);
-               printf("Volume of cube : %f\n",vol_cube(l));
+               printf("Volume of cube : %.2f\n",vol_cube(l));
                break;
         case 2:printf("Enter length of cuboid : ");
                scanf("%f",&l);
@@ -38,23 +38,23 @@ int main()
                scanf("%f",&b);
                printf("Enter height of cuboid : ");
                scanf("%f",&h);
-               printf("Volume of cuboid : %f\n",vol_cuboid(l,b,h));
+               printf("Volume of cuboid : %.2f\n",vol_cuboid(l,b,h));
                break;
         case 3:printf("Enter radius of sphere : ");
                scanf("%f",&l);
-               printf("Volume of sphere : %f\n",vol_sphere(l));
+               printf("Volume of sphere : %.2f\n",vol_sphere(l));
                break;
         case 4:printf("Enter radius of cylinder : ");
                scanf("%f",&l);
                printf("Enter height of cylinder : ");
                scanf("%f",&h);
-               printf("Volume of cylinder : %f\n",vol_cylinder(l,h));
+               printf("Volume of cylinder : %.2f\n",vol_cylinder(l,h));
                break;
         case 5:printf("Enter radius of cone : ");
                scanf("%f",&l);
                printf("Enter height of cone : ");
                scanf("%f",&h);
-               printf("Volume of cone : %f\n",vol_cone(l,h));
+               printf("Volume of cone : %.2f\n",vol_cone(l,h));
                break;
         default:printf("Wrong choice");
                 break;
