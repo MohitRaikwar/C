@@ -40,8 +40,6 @@ void bubble_sort(int arr[],int size)
                 swapped=true;
             }
         }
-
-       //Swapping minimum element to i th index
        printf("After %d pass\n",i+1);
        print(arr,size);
 

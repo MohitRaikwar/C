@@ -5,7 +5,7 @@
 
 //functions prototype
 void set_union(int a[],int b[],int x,int y);
-void set_intersetion(int a[],int b[],int x,int y);
+void set_intersection(int a[],int b[],int x,int y);
 void set_difference(int a[],int b[],int x,int y);
 void print_set(int a[],int n);
 void input(int arr[],int size);
@@ -33,7 +33,7 @@ int main()
     printf("Set union (A∪B) : ");
     set_union(set1,set2,x,y);
     printf("Set intersection (A∩B) : ");
-    set_intersetion(set1,set2,x,y);
+    set_intersection(set1,set2,x,y);
     printf("Set difference (A-B) : ");
     set_difference(set1,set2,x,y);
     printf("Set difference (B-A) : ");
@@ -71,7 +71,7 @@ void set_union(int a[],int b[],int x,int y)
 }
 
 //prints set intersection
-void set_intersetion(int a[],int b[],int x,int y)
+void set_intersection(int a[],int b[],int x,int y)
 {
     int min=(x<y)?x:y;
     int intersection[min];
