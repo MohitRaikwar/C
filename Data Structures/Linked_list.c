@@ -5,7 +5,7 @@ typedef struct node
     int number;
     struct node* next;
 }node;
-void insert_at_last(node**,int); 
+void insert_at_last(node**,int);
 void insert_at_first(node** , int);
 void free_list(node**);
 void show_list(node**);
@@ -56,7 +56,6 @@ void insert_at_last(node **list,int n)
   }
   else
   {
-       
        node* last=*list;
        while(last->next!=NULL)
        {
@@ -96,7 +95,7 @@ void show_list(node**list)
 }
 void free_list(node** list)
 {
-  
+
   while(*list!=NULL)
   {
       node* tmp=(*list)->next;

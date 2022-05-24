@@ -59,17 +59,15 @@ int main()
 void bubble_sort(int arr[],int size)
 {
     bool swapped;
-    for(i=0;i<size-1;i++)     //size-1 for unnecessary going for last+1 element in j loop
+    for(int i=0;i<size-1;i++)     //size-1 for unnecessary going for last+1 element in j loop
     {
-
         for(j=0;j<(size-i-1);j++)
         {
             swapped=false;
-            if(arr[j]>arr[j+1])  //Searching for minimum no. and then updating it
+            if(arr[j]>arr[j+1])
             {
                 swap(&arr[j],&arr[j+1]);
                 swapped=true;
-
             }
         }
        printf("After %d pass\n",i+1);
