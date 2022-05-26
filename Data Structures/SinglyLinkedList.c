@@ -9,7 +9,6 @@ typedef struct node
 
 //function protoypes
 void insert(int n,int x);
-void put(node*);
 int list_size();
 int search_element(int n);
 void traverse_list();
